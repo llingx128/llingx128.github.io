@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>社区图片发布保存</title>
+  <style>
+    :root { color-scheme: light; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      font-family: -apple-system, "HarmonyOS Sans SC", "PingFang SC", sans-serif;
+      background: #f5f6f8;
+      color: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+    .card {
+      width: 100%;
+      max-width: 360px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 32px 24px;
+      box-sizing: border-box;
+      text-align: center;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+    }
+    .icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      border-radius: 18px;
+      background: #e8f0ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 8px;
+    }
+    .share-title {
+      display: none;
+      font-size: 15px;
+      color: #0a59f7;
+      font-weight: 500;
+      margin: 0 0 12px;
+      word-break: break-all;
+    }
+    p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #8a8a8f;
+      margin: 0;
+    }
+    .tip {
+      margin-top: 20px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #f2f4f7;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #6b6b70;
+      text-align: left;
+    }
+    .preview-img {
+      max-width: 100%;
+      max-height: 220px;
+      border-radius: 12px;
+      margin: 16px 0;
+      object-fit: contain;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">🖼️</div>
+    <h1>请安装「社区图片发布保存」后查看分享内容</h1>
+    <p class="share-title" id="shareTitle"></p>
+    <img class="preview-img" id="previewImg" alt="分享预览图">
+    <p>安装后，可查看内容、点赞评论和转发。</p>
+    <div class="tip">当前为网页兜底页面：App已安装时，链接会优先唤起App，不会展示本页。</div>
+  </div>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const imgUrl = params.get('imgUrl');
+    const title = params.get('title');
+
+    const titleEl = document.getElementById('shareTitle');
+    const imgEl = document.getElementById('previewImg');
+
+    if (title) {
+      titleEl.textContent = title;
+      titleEl.style.display = 'block';
+    }
+    if (imgUrl) {
+      imgEl.src = imgUrl;
+      imgEl.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
